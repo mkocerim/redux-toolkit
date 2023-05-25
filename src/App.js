@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import UserShow from "./components/user_show";
 import { setFirstname, setLastname, setAge } from "./redux/userSlice";
+import { json } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
   const authState = useSelector((state) => state.auth);
@@ -53,12 +55,21 @@ function App() {
                 className="form-control"
                 placeholder="Please Your Age"
                 onChange={(event) => dispatch(setAge(event.target.value))}
-                onKeyUp={event=> console.log('KEY UP EVENT EXECUTED  ' + event.target.value)}
-                onKeyDown={event=> console.log('KEY DOWN EVENT EXECUTED  ' + event.target.value)}
-                onBlur={event=> console.log('KEY BLUR EVENT EXECUTED  ' + event.target.value)}
-                onFocus={event=> console.log('KEY FOCUS EVENT EXECUTED  ' + event.target.value)}
-                onClick={event=> console.log('ONCLICK EVENT EXECUTED  ' + event.target.value)}
-
+                onKeyUp={(event) =>
+                  console.log("KEY UP EVENT EXECUTED  " + event.target.value)
+                }
+                onKeyDown={(event) =>
+                  console.log("KEY DOWN EVENT EXECUTED  " + event.target.value)
+                }
+                onBlur={(event) =>
+                  console.log("KEY BLUR EVENT EXECUTED  " + event.target.value)
+                }
+                onFocus={(event) =>
+                  console.log("KEY FOCUS EVENT EXECUTED  " + event.target.value)
+                }
+                onClick={(event) =>
+                  console.log("ONCLICK EVENT EXECUTED  " + event.target.value)
+                }
               />
               <div className="invalid-feedback">
                 Please enter a valid age for shipping updates.
@@ -69,16 +80,15 @@ function App() {
         <div className="col-6">
           <UserShow />
         </div>
-        <br/>
-        <div className="col-12">{JSON.stringify(userState)}</div> 
-        <br></br>
-        
+        <br />
+        <div className="col-12">{JSON.stringify(userState)}</div>
+        <hr></hr>
+
         <div className="col-12">İSİM: {userState.firstname}</div>
-        <br></br>
+        <hr></hr>
         <div className="col-12">SOYAD: {userState.lastname}</div>
-        <br></br>
+        <hr></hr>
         <div className="col-12">YAŞ: {userState.age}</div>
-        
       </div>
     </div>
   );
